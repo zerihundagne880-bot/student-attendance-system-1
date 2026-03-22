@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Attendance | Zeda</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- 1. Student Section -->
+<div id="student-section">
+    <div class="card">
+        <h2>📝 Student Registration</h2>
+        <label>Full Name:</label>
+        <input type="text" id="studentName" placeholder="Enter full name">
+        
+        <label>Select Date:</label>
+        <input type="date" id="attendanceDate">
+        
+        <button onclick="submitAttendance()" id="submit-btn" class="btn-save">Submit Attendance</button>
+        <button onclick="showAdminLogin()" class="btn-link">Admin Login</button>
+    </div>
+</div>
+
+<!-- 2. Admin Login Section -->
+<div id="login-section" style="display: none;">
+    <div class="card">
+        <h2>🔐 Admin Login</h2>
+        <input type="email" id="emailInput" placeholder="Admin Email">
+        <input type="password" id="passwordInput" placeholder="Password">
+        <button onclick="handleLogin()" class="btn-login">Login</button>
+        <button onclick="showStudentSection()" class="btn-link">Back</button>
+    </div>
+</div>
+
+<!-- 3. Admin Dashboard -->
+<div id="admin-dashboard" style="display: none;">
+    <div class="header">
+        <h2>📊 Dashboard</h2>
+        <button onclick="location.reload()" class="logout-btn">Logout</button>
+    </div>
+
+    <!-- Analytics Chart -->
+    <div class="card" style="margin-bottom: 20px;">
+        <canvas id="attendanceChart"></canvas>
+    </div>
+
+    <!-- Search & Actions -->
+    <div class="card">
+        <input type="text" id="searchInput" onkeyup="searchStudents()" placeholder="🔍 Search by name...">
+        <div class="actions">
+            <button onclick="fetchRecords()" class="btn-refresh">Refresh</button>
+            <button onclick="exportToExcel()" class="btn-excel">Export CSV</button>
+        </div>
+    </div>
+
+    <div id="recordList"></div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
